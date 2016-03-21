@@ -28,6 +28,7 @@ RUN     apt-get update && apt-get install -y \
             python-pygments \
             sendmail \
             subversion \
+            python3 python3-virtualenv \
             tar \
             sudo \
         && apt-get clean && rm -rf /var/lib/apt/lists/*
@@ -36,9 +37,9 @@ RUN     apt-get update && apt-get install -y \
 # repeatable builds use the latest SHA
 ADD     download.sh /opt/download.sh
 WORKDIR /opt
-RUN     bash download.sh phabricator 79f2e81f38
-RUN     bash download.sh arcanist    c304c4e045
-RUN     bash download.sh libphutil   55f554b618
+RUN     bash download.sh phabricator 70c679110e1d4632d19ca160379f83f6f20d79d1
+RUN     bash download.sh arcanist    ed476cf8489c4bf41b7a0075f15d40820d640fe4
+RUN     bash download.sh libphutil   9c472e7c9b64395424c6cd25734bf239cb3c113d
 
 # Setup apache
 RUN     a2enmod rewrite
